@@ -1,0 +1,32 @@
+<%- include('partials/head') %>
+
+<body>
+    <%- include('partials/nav') %>
+
+    <div class="side">
+        <p class="overtekst">DAGENS JULESPØRSMÅL</p>
+        <h1>Luke <%= question.id %></h1>
+        <div class="sporsmal">
+            <p><%= question.question %></p>
+        </div>
+        <form action="/luke/<%= question.id %>" method="POST">
+    <label for="svar">Ditt svar</label>
+    <input type="text" id="svar" name="svar" required>
+    <% if (question.type === "video") { %>
+    <iframe
+        width="100%"
+        height="315"
+        src="<%= question.video_url.replace('watch?v=', 'embed/') %>"
+        title="Video til spørsmålet"
+        allowfullscreen>
+    </iframe>
+<% } %>
+
+    <button type="submit">Send svar</button>
+</form>
+        <a href="/" class="tilbake">Tilbake til kalenderen</a>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box; /* Kant og padding regnes med i bredden */
+}
+body {
+    margin: 0; /* Fjerner standardavstanden rundt siden */
+    background-color: #fafafa; /* Lys bakgrunn på nettsiden */
+    color: #222; /* Mørk tekst */
+    font-family: Arial, sans-serif; /* Velger skrifttype */
+    line-height: 1.6; /* Luft mellom tekstlinjene */
+}
+a {
+    color: #8b2525; /* Rød tekst */
+}
+/* Menyen */
+.meny {
+    display: flex; /* Legger menyinnholdet ved siden av hverandre */
+    justify-content: center; /* Sentrerer innholdet vannrett */
+    align-items: center; /* Sentrerer innholdet loddrett */
+    flex-wrap: wrap; /* Flytter innhold til neste rad ved lite plass */
+    gap: 24px; /* Avstand mellom tingene i menyen */
+    padding: 20px; /* Luft på innsiden */
+    background-color: #8b2525; /* Rød bakgrunn */
+    color: white; /* Hvit tekst */
+}
+.meny a {
+    color: white; /* Hvit tekst */
+    text-decoration: none; /* Fjerner understreking på lenker */
+    font-weight: bold; /* Tykk tekst */
+}
+.meny a:hover {
+    text-decoration: underline; /* Understreker lenken når musen er over */
+}
+/* Innhold og overskrifter */
+.side {
+    max-width: 1000px; /* Innholdet blir ikke bredere enn dette */
+    min-height: 75vh; /* Minst 75 prosent av høyden i nettleservinduet */
+    margin: 0 auto; /* Plasserer boksen i midten */
+    padding: 40px 20px; /* 40 px oppe og nede, 20 px på sidene */
+    text-align: center; /* Sentrerer teksten */
+}
+h1 {
+    margin: 10px 0; /* Luft over og under overskriften */
+    color: #8b2525; /* Rød tekst */
+    font-size: 38px; /* Størrelsen på overskriften */
+}
+.overtekst {
+    color: #8b2525; /* Rød tekst */
+    font-size: 13px; /* Liten tekst over overskriften */
+    letter-spacing: 2px; /* Luft mellom bokstavene */
+}
+/* Kalenderen */
+.kalender {
+    display: grid; /* Plasserer lukene i et rutenett */
+    grid-template-columns: repeat(6, 1fr); /* Seks like brede kolonner */
+    gap: 15px; /* Avstand mellom lukene */
+    margin-top: 30px; /* Luft over kalenderen */
+}
+.luke {
+    display: block; /* Gir elementet sin egen blokk */
+    padding: 22px 8px; /* Luft inne i hver luke */
+    background-color: white; /* Hvit bakgrunn */
+    border: 2px solid #8b2525; /* Rød kant rundt lukene */
+    border-radius: 8px; /* Avrundede hjørner */
+    text-decoration: none; /* Fjerner understreking på lenker */
+}
+.luke:hover {
+    background-color: #fceaea; /* Lys rød bakgrunn når musen er over */
+}
+.luke-tall {
+    display: block; /* Gir elementet sin egen blokk */
+    font-size: 36px; /* Store tall i lukene */
+}
+.luke-tekst {
+    display: block; /* Gir elementet sin egen blokk */
+    font-size: 12px; /* Liten tekst under tallet */
+}
+/* Skjema og spørsmål bruker samme type boks */
+form, .sporsmal {
+    max-width: 500px; /* Maksimal bredde på boksen */
+    margin: 25px auto; /* Sentrerer boksen og gir luft over og under */
+    padding: 25px; /* Luft inne i boksen */
+    background-color: white; /* Hvit bakgrunn */
+    border: 1px solid #ddd; /* Lys grå kant */
+    border-radius: 8px; /* Avrundede hjørner */
+}
+form {
+    text-align: left; /* Teksten starter til venstre */
+}
+label {
+    display: block; /* Gir elementet sin egen blokk */
+    margin-bottom: 5px; /* Luft under teksten over feltet */
+}
+input {
+    width: 100%; /* Fyller bredden til boksen rundt */
+    padding: 12px; /* Luft inne i feltet */
+    margin-bottom: 18px; /* Luft under feltet */
+    border: 1px solid #aaa; /* Grå kant rundt feltet */
+    border-radius: 4px; /* Litt avrundede hjørner */
+    font: inherit; /* Bruker samme skrift som resten */
+}
+button, .tilbake {
+    display: inline-block; /* Lar lenken få størrelse som en knapp */
+    padding: 12px 20px; /* Luft inne i knappen */
+    background-color: #8b2525; /* Rød bakgrunn */
+    color: white; /* Hvit tekst */
+    border: none; /* Fjerner standardkanten */
+    border-radius: 4px; /* Litt avrundede hjørner */
+    text-decoration: none; /* Fjerner understreking på lenker */
+    font: inherit; /* Bruker samme skrift som resten */
+    cursor: pointer; /* Viser en hånd når musen er over */
+}
+button:hover, .tilbake:hover {
+    background-color: #651a1a; /* Mørkere rødt når musen er over */
+}
+.feilmelding {
+    color: #a31c28; /* Rød tekst for feil */
+    font-weight: bold; /* Tykk tekst */
+}
+:focus-visible {
+    outline: 3px solid #8b2525; /* Synlig kant ved tastaturnavigasjon */
+    outline-offset: 4px; /* Luft mellom kanten og elementet */
+}
+/* Nederst på siden */
+.footer {
+    padding: 24px; /* Luft inne i bunnteksten */
+    background-color: #8b2525; /* Rød bakgrunn */
+    color: white; /* Hvit tekst */
+    text-align: center; /* Sentrerer teksten */
+}
+/* Tre luker per rad på mobil */
+@media (max-width: 650px) {
+    .kalender {
+        grid-template-columns: repeat(3, 1fr); /* Tre kolonner på små skjermer */
+        gap: 10px; /* Mindre avstand mellom lukene på mobil */
+    }
+    h1 {
+        font-size: 30px; /* Mindre overskrift på mobil */
+    }
+}
+/* Tre bokser med lenker til admininnholdet */
+.admin-meny {
+    display: flex; /* Legger boksene ved siden av hverandre */
+    flex-wrap: wrap; /* Flytter bokser ned på små skjermer */
+    gap: 15px; /* Luft mellom boksene */
+    margin-top: 30px;
+}
+.admin-meny .luke {
+    flex: 1; /* Gir boksene like mye plass */
+    min-width: 180px; /* Hindrer at boksene blir for smale */
+}

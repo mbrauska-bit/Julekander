@@ -1,0 +1,48 @@
+<%- include('partials/head') %>
+
+<body>
+    <%- include('partials/nav') %>
+
+    <div class="side">
+        <p class="overtekst">JULEKALENDEREN 2026</p>
+        <h1>Adminpanel</h1>
+        <p>Her får læreren oversikt over julekalenderen.</p>
+
+        <!-- Lenker til de tre delene av adminpanelet. -->
+        <div class="admin-meny">
+            <a href="#deltakere" class="luke">
+                <h2>Deltakere</h2>
+                <p>Se hvem som deltar</p>
+            </a>
+            <a href="#svar" class="luke">
+                <h2>Innsendte svar</h2>
+                <p>Les og vurder svar</p>
+            </a>
+            <a href="#vinnere" class="luke">
+                <h2>Vinnere</h2>
+                <p>Oversikt over vinnerne</p>
+            </a>
+        </div>
+
+        <!-- Boksene får innhold fra databasen senere. -->
+        <div id="deltakere" class="sporsmal">
+            <h2>Deltakere</h2>
+        <p>Registrerte deltakere: <%= antallDeltakere %></p>
+        </div>
+
+        <div id="svar" class="sporsmal">
+            <h2>Innsendte svar</h2>
+            <p>Antall innsendte svar: <%= antallSvar %></p>
+        </div>
+
+        <div id="vinnere" class="sporsmal">
+            <h2>Vinnere</h2>
+            <p>Antall vinnere: <%= antallVinnere %></p>
+        </div>
+
+        <a href="/" class="tilbake">Tilbake til kalenderen</a>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

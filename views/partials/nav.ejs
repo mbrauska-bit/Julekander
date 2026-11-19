@@ -1,0 +1,10 @@
+<nav class="meny">
+    <a href="/">Hjem</a>
+
+    <% if (bruker) { %>
+        <span>Hei, <%= bruker.navn %>!</span>
+    <% } else { %>
+        <a href="/login">Logg inn</a>
+    <% } %>
+    <a href="/admin">Adminpanel</a>
+</nav>

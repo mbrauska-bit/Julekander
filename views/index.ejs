@@ -1,0 +1,35 @@
+<%- include('partials/head') %>
+
+<body>
+    <%- include('partials/nav') %>
+
+    <div class="side">
+        <p class="overtekst">DESEMBER 2026</p>
+        <h1>Julekalenderen</h1>
+
+        <% if (bruker) { %>
+            <p>Hei, <%= bruker.navn %>!</p>
+        <% } %>
+
+        <p>En luke for hver dag fra 1. til 24. desember.</p>
+
+        <div class="kalender">
+            <% for (let i = 1; i <= 24; i++) { %>
+                <% if (i <= aapneLuker) { %>
+                    <a href="/luke/<%= i %>" class="luke">
+                        <span class="luke-tall"><%= i %></span>
+                        <span class="luke-tekst">desember</span>
+                    </a>
+                <% } else { %>
+                    <div class="luke">
+                        <span class="luke-tall">🔒 <%= i %></span>
+                        <span class="luke-tekst">Låst</span>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
