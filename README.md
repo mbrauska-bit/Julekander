@@ -149,3 +149,7 @@ Brukeren kan kontakte ansvarlig lærer for hjelp. Ikke del passord eller hemmeli
 - Oppdatere README og planlegge arbeidet i GitHub.
 
 Linux-oppsettet gjør jeg selv. Jeg skriver om dette når det er gjort.
+
+## GitHub-prosjekt
+
+My-Christmas-website
