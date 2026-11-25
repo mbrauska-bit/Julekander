@@ -55,36 +55,29 @@ app.get("/", (req, res) => {
 });
 app.get("/login", (req, res) => {
     if (res.locals.bruker) return res.redirect("/");
-    res.render("login", { navn: "", email: "", feil: "" });
+    res.render("login",
+        { navn: "",
+         email: "",
+          feil: "" });
 });
 app.get("/admin", async (req, res) => {
+    // Brukeren er allerede hentet etter at JWT-tokenet er kontrollert.
+    const user = res.locals.bruker;
+    if (!user) {
+        return res.redirect("/login");
+    }
+    if (user.rolle !== "admin") {
+        return res.redirect("/");
+    }
 
-    console.log("req cookies", req.cookies)
-
-    let jwtToken = req.cookies.jwt;
-   const decoded =  jwt.decode(jwtToken);
-   console.log(decoded);
-
-   let userId = decoded.userId;
-
- const user = await  User.findOne({_id: userId});
- console.log(user);
-
- if(user.rolle !== "admin") {
-    res.redirect("/")
- } else {
     const antallDeltakere = await User.countDocuments();
     const antallSvar = await Answear.countDocuments();
     const antallVinnere = 0;
-    
-res.render("admin", {
-    antallDeltakere: antallDeltakere,
-    antallSvar: antallSvar,
-    antallVinnere: antallVinnere
-});
-
- }
-
+    res.render("admin", {
+        antallDeltakere: antallDeltakere,
+        antallSvar: antallSvar,
+        antallVinnere: antallVinnere
+    });
 });
 
 // Finn brukeren. Lagre en ny hvis e-posten ikke finnes.
@@ -149,6 +142,10 @@ app.post("/luke/:nummer", async (req, res) => {
     const svar = req.body.svar; // Les teksten deltakeren sendte inn.
     if (!Number.isInteger(nummer) || nummer < 1 || nummer > 24) {
         return res.status(400).send("Ugyldig luke.");
+    }
+    // Admin kan forhåndsvise, men ingen kan sende svar til framtidige luker.
+    if (nummer > aapneLuker()) {
+        return res.status(403).send("Denne luken er låst.");
     }
     if (typeof svar !== "string" || !svar.trim()) {
         return res.status(400).send("Skriv et svar.");

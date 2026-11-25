@@ -15,9 +15,12 @@ Prosjektet er fortsatt under arbeid.
 - JWT og en cookie som kan huske innloggingen i 30 dager.
 - En hilsen med navnet til den innloggede deltakeren.
 - 24 spørsmål og video i enkelte luker.
-- Datolås når elever åpner framtidige luker.
+- Datolås når elever åpner framtidige luker eller prøver å sende svar til dem.
 - Mulighet for admin til å åpne alle lukene for testing.
 - Et adminpanel med antall brukere og innsendte svar.
+- Adminpanelet bruker brukeren som er hentet etter kontroll av JWT-tokenet.
+- Brukere uten innlogging sendes til login. Brukere uten adminrollen sendes til forsiden.
+- Admin kan forhåndsvise framtidige luker, men må vente med å sende svar til de åpner.
 
 ## Slik bruker eleven nettsiden
 
@@ -100,9 +103,15 @@ Hvis cookien slettes, må deltakeren logge inn igjen.
 
 ## Videre arbeid
 
-- Fullføre datolås ved innsending og forbedre adminadgangen.
+- Bekrefte hvem som eier e-postadressen før den brukes til å gi adminadgang.
 - Vise lister, vurdere svar, trekke vinnere og lagre vinnernavn.
 - La læreren endre innhold, legge til bilder og teste mobil og tastatur.
 - Koble Nginx til appen og bekrefte PM2 og oppstart etter omstart.
 - Fullføre SSH-tilgang for lærere, databaseskisse og GitHub Project.
 - Dokumentere VM-ressurser, rettigheter, IP-plan og tester.
+
+## Siste kontroll
+
+- Adminadgang og datolås er testet med en falsk database.
+- Testene sjekket ugyldige og utløpte token, brukerroller og innsending før og i desember.
+- Testene endret ikke ekte deltakere eller svar. Oppsettet på VM-en må testes separat.
